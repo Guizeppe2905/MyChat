@@ -11,18 +11,23 @@
 		516F5E4C2903AA9B003D7785 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F5E4B2903AA9B003D7785 /* AppDelegate.swift */; };
 		516F5E4E2903AA9B003D7785 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F5E4D2903AA9B003D7785 /* SceneDelegate.swift */; };
 		516F5E502903AA9B003D7785 /* EntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516F5E4F2903AA9B003D7785 /* EntranceViewController.swift */; };
-		516F5E532903AA9B003D7785 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516F5E512903AA9B003D7785 /* Main.storyboard */; };
 		516F5E552903AA9C003D7785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516F5E542903AA9C003D7785 /* Assets.xcassets */; };
-		516F5E582903AA9C003D7785 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516F5E562903AA9C003D7785 /* LaunchScreen.storyboard */; };
 		516F5E602903ABBA003D7785 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 516F5E5F2903ABBA003D7785 /* GoogleService-Info.plist */; };
 		51CC412E2903E3A000DA36F2 /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC412D2903E3A000DA36F2 /* TemplateViewController.swift */; };
 		51CC41302903E77900DA36F2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC412F2903E77900DA36F2 /* LoginViewController.swift */; };
 		51CC41322903FF3000DA36F2 /* Keyboard + extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC41312903FF3000DA36F2 /* Keyboard + extenstion.swift */; };
 		51CC41362904019D00DA36F2 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC41352904019D00DA36F2 /* RegistrationModel.swift */; };
 		51CC41382904028800DA36F2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC41372904028800DA36F2 /* Service.swift */; };
+		51EA702A290905C500983924 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA7029290905C500983924 /* Router.swift */; };
+		51EA702C29090F0300983924 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA702B29090F0300983924 /* ContactsViewController.swift */; };
+		51EA702E29090F3500983924 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA702D29090F3500983924 /* ContactTableViewCell.swift */; };
+		51EA703029090F6200983924 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA702F29090F6200983924 /* ReusableIdentifier.swift */; };
+		51EA703229090FC900983924 /* ContactCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA703129090FC900983924 /* ContactCellModel.swift */; };
+		51EA70342909100300983924 /* ContactCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA70332909100300983924 /* ContactCellViewModel.swift */; };
+		51EA703629094F7E00983924 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA703529094F7E00983924 /* ProfileViewController.swift */; };
 		51FD49B62904156800CC31F2 /* Alerts + extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FD49B52904156800CC31F2 /* Alerts + extention.swift */; };
-		51FD49B829042C9A00CC31F2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FD49B729042C9A00CC31F2 /* ContactsViewController.swift */; };
-		51FD49BB29043E1E00CC31F2 /* ListOfChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FD49BA29043E1E00CC31F2 /* ListOfChatsViewController.swift */; };
+		51FD49B829042C9A00CC31F2 /* ListOfChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FD49B729042C9A00CC31F2 /* ListOfChatsViewController.swift */; };
+		51FD49BB29043E1E00CC31F2 /* Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FD49BA29043E1E00CC31F2 /* Delete.swift */; };
 		51FD49BD29043E5600CC31F2 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FD49BC29043E5600CC31F2 /* TabBarViewController.swift */; };
 		51FD49BF2904422100CC31F2 /* SenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FD49BE2904422100CC31F2 /* SenderModel.swift */; };
 		51FD49C12904426600CC31F2 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FD49C02904426600CC31F2 /* MessageModel.swift */; };
@@ -38,9 +43,7 @@
 		516F5E4B2903AA9B003D7785 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		516F5E4D2903AA9B003D7785 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		516F5E4F2903AA9B003D7785 /* EntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceViewController.swift; sourceTree = "<group>"; };
-		516F5E522903AA9B003D7785 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		516F5E542903AA9C003D7785 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		516F5E572903AA9C003D7785 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		516F5E592903AA9C003D7785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		516F5E5F2903ABBA003D7785 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51CC412D2903E3A000DA36F2 /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
@@ -48,9 +51,16 @@
 		51CC41312903FF3000DA36F2 /* Keyboard + extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard + extenstion.swift"; sourceTree = "<group>"; };
 		51CC41352904019D00DA36F2 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		51CC41372904028800DA36F2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		51EA7029290905C500983924 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		51EA702B29090F0300983924 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		51EA702D29090F3500983924 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		51EA702F29090F6200983924 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
+		51EA703129090FC900983924 /* ContactCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellModel.swift; sourceTree = "<group>"; };
+		51EA70332909100300983924 /* ContactCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellViewModel.swift; sourceTree = "<group>"; };
+		51EA703529094F7E00983924 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		51FD49B52904156800CC31F2 /* Alerts + extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alerts + extention.swift"; sourceTree = "<group>"; };
-		51FD49B729042C9A00CC31F2 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
-		51FD49BA29043E1E00CC31F2 /* ListOfChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfChatsViewController.swift; sourceTree = "<group>"; };
+		51FD49B729042C9A00CC31F2 /* ListOfChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfChatsViewController.swift; sourceTree = "<group>"; };
+		51FD49BA29043E1E00CC31F2 /* Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delete.swift; sourceTree = "<group>"; };
 		51FD49BC29043E5600CC31F2 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		51FD49BE2904422100CC31F2 /* SenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderModel.swift; sourceTree = "<group>"; };
 		51FD49C02904426600CC31F2 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
@@ -101,20 +111,14 @@
 		516F5E4A2903AA9B003D7785 /* myChat */ = {
 			isa = PBXGroup;
 			children = (
+				51EA703A29095CF800983924 /* App */,
 				51CC41342904018600DA36F2 /* Models */,
-				51CC412C2903E37E00DA36F2 /* Login&Registration */,
+				51EA703729095CAD00983924 /* Views */,
+				51EA703829095CBA00983924 /* ViewModels */,
 				51FD49B9290433E500CC31F2 /* Helpers */,
-				516F5E4B2903AA9B003D7785 /* AppDelegate.swift */,
-				516F5E4D2903AA9B003D7785 /* SceneDelegate.swift */,
-				516F5E512903AA9B003D7785 /* Main.storyboard */,
-				516F5E542903AA9C003D7785 /* Assets.xcassets */,
-				516F5E562903AA9C003D7785 /* LaunchScreen.storyboard */,
 				516F5E5F2903ABBA003D7785 /* GoogleService-Info.plist */,
 				516F5E592903AA9C003D7785 /* Info.plist */,
-				51FD49BC29043E5600CC31F2 /* TabBarViewController.swift */,
-				51FD49B729042C9A00CC31F2 /* ContactsViewController.swift */,
-				51FD49BA29043E1E00CC31F2 /* ListOfChatsViewController.swift */,
-				51FD49C2290442DC00CC31F2 /* ChatViewController.swift */,
+				51FD49BA29043E1E00CC31F2 /* Delete.swift */,
 			);
 			path = myChat;
 			sourceTree = "<group>";
@@ -137,15 +141,58 @@
 				51FD49BE2904422100CC31F2 /* SenderModel.swift */,
 				51FD49C02904426600CC31F2 /* MessageModel.swift */,
 				51FD49C4290478D600CC31F2 /* CurrentUserModel.swift */,
+				51EA703129090FC900983924 /* ContactCellModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		51EA703729095CAD00983924 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				51FD49BC29043E5600CC31F2 /* TabBarViewController.swift */,
+				51EA702B29090F0300983924 /* ContactsViewController.swift */,
+				51FD49B729042C9A00CC31F2 /* ListOfChatsViewController.swift */,
+				51EA703529094F7E00983924 /* ProfileViewController.swift */,
+				51FD49C2290442DC00CC31F2 /* ChatViewController.swift */,
+				51EA703929095CE300983924 /* Cells */,
+				51CC412C2903E37E00DA36F2 /* Login&Registration */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		51EA703829095CBA00983924 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				51EA70332909100300983924 /* ContactCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		51EA703929095CE300983924 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				51EA702D29090F3500983924 /* ContactTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		51EA703A29095CF800983924 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				516F5E4D2903AA9B003D7785 /* SceneDelegate.swift */,
+				516F5E4B2903AA9B003D7785 /* AppDelegate.swift */,
+				516F5E542903AA9C003D7785 /* Assets.xcassets */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		51FD49B9290433E500CC31F2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				51CC41312903FF3000DA36F2 /* Keyboard + extenstion.swift */,
+				51EA702F29090F6200983924 /* ReusableIdentifier.swift */,
 				51FD49B52904156800CC31F2 /* Alerts + extention.swift */,
+				51EA7029290905C500983924 /* Router.swift */,
 				51CC41372904028800DA36F2 /* Service.swift */,
 			);
 			path = Helpers;
@@ -220,10 +267,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				516F5E582903AA9C003D7785 /* LaunchScreen.storyboard in Resources */,
 				516F5E552903AA9C003D7785 /* Assets.xcassets in Resources */,
 				516F5E602903ABBA003D7785 /* GoogleService-Info.plist in Resources */,
-				516F5E532903AA9B003D7785 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,45 +322,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				51CC41302903E77900DA36F2 /* LoginViewController.swift in Sources */,
-				51FD49B829042C9A00CC31F2 /* ContactsViewController.swift in Sources */,
+				51FD49B829042C9A00CC31F2 /* ListOfChatsViewController.swift in Sources */,
 				51FD49C3290442DC00CC31F2 /* ChatViewController.swift in Sources */,
 				516F5E502903AA9B003D7785 /* EntranceViewController.swift in Sources */,
+				51EA702A290905C500983924 /* Router.swift in Sources */,
+				51EA702C29090F0300983924 /* ContactsViewController.swift in Sources */,
+				51EA703629094F7E00983924 /* ProfileViewController.swift in Sources */,
 				51CC41322903FF3000DA36F2 /* Keyboard + extenstion.swift in Sources */,
+				51EA703029090F6200983924 /* ReusableIdentifier.swift in Sources */,
 				51FD49BF2904422100CC31F2 /* SenderModel.swift in Sources */,
 				51FD49B62904156800CC31F2 /* Alerts + extention.swift in Sources */,
 				51CC412E2903E3A000DA36F2 /* TemplateViewController.swift in Sources */,
-				51FD49BB29043E1E00CC31F2 /* ListOfChatsViewController.swift in Sources */,
+				51EA703229090FC900983924 /* ContactCellModel.swift in Sources */,
+				51EA70342909100300983924 /* ContactCellViewModel.swift in Sources */,
+				51FD49BB29043E1E00CC31F2 /* Delete.swift in Sources */,
 				516F5E4C2903AA9B003D7785 /* AppDelegate.swift in Sources */,
 				51CC41382904028800DA36F2 /* Service.swift in Sources */,
 				51FD49C12904426600CC31F2 /* MessageModel.swift in Sources */,
 				51FD49C5290478D600CC31F2 /* CurrentUserModel.swift in Sources */,
 				510089F92903C5EE0073D86D /* RegistrationViewController.swift in Sources */,
 				51FD49BD29043E5600CC31F2 /* TabBarViewController.swift in Sources */,
+				51EA702E29090F3500983924 /* ContactTableViewCell.swift in Sources */,
 				51CC41362904019D00DA36F2 /* RegistrationModel.swift in Sources */,
 				516F5E4E2903AA9B003D7785 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		516F5E512903AA9B003D7785 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				516F5E522903AA9B003D7785 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		516F5E562903AA9C003D7785 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				516F5E572903AA9C003D7785 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		516F5E5A2903AA9C003D7785 /* Debug */ = {
@@ -445,7 +478,6 @@
 				INFOPLIST_FILE = myChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -474,7 +506,6 @@
 				INFOPLIST_FILE = myChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

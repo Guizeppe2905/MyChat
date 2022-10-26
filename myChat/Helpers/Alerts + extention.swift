@@ -14,6 +14,7 @@ extension UIViewController {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            Router.shared.navigateToVC(TabBarViewController())
             completionHandler()
         }
         

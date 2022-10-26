@@ -21,9 +21,10 @@ class Service {
             if error == nil {
                 if result != nil {
                     guard let userID = result?.user.uid else { return }
+                    let nickname = data.nickname
                     let email = data.email
                     let password = data.password
-                    let data: [String: Any] = ["email": email, "password": password]
+                    let data: [String: Any] = ["nickname": nickname, "email": email, "password": password]
                     Firestore.firestore().collection("users").document(userID).setData(data)
                     completion(ResponseCode(code: 1))
                 }
@@ -65,6 +66,7 @@ class Service {
         var currentUsers = [CurrentUserModel]()
         Firestore.firestore().collection("users")
             .whereField("email", isNotEqualTo: email)
+         
             .getDocuments { [weak self] snap, error in
             guard let self = self else { return }
            
@@ -74,8 +76,9 @@ class Service {
                     for doc in docs {
                         let data = doc.data()
                         let userID = doc.documentID
-                        let email = data["email"] 
-                        currentUsers.append(CurrentUserModel(id: userID, email: email as! String))
+                        let email = data["email"]
+                        let nickname = data["nickname"]
+                        currentUsers.append(CurrentUserModel(id: userID, email: email as! String, nickname: nickname as! String))
                     }
                 }
                 completion(currentUsers)
