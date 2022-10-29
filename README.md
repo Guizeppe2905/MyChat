@@ -6,6 +6,11 @@
 
 ***
 
+<p align="center">
+<img src="https://media.giphy.com/media/uzf0fVkWhNt92Edap3/giphy.gif" alt="animated" />
+
+
+
 ### Быстрый просмотр проекта
 ***
  <img align="right" src="https://im.wampi.ru/2022/10/29/SNIMOK-EKRANA-2022-10-29-V-12.40.33.png" alt="drawing" style="width:250px;"/> Можно запустить проект сразу на двух симмуляторах разных моделей и, создав двух пользователей, переписываться друг с другом в личке, а также в общем форуме. Также можно провеить валидативность всех полей при регистрации, корректность авторизации, отображение аватарок в чатах, смена аватарки и корректное ее отображение в чатах после изменений, смена ника, пароля и др. 
@@ -55,5 +60,3 @@
 
 UIKit, Combine, практически все библиотеки Firebase, MessageKit, URLSession, ProgressHUD, UserDefaults, UIImagePicker, архитектура MVVM.
 
-<!-- <p align="center">
-<img src="https://media.giphy.com/media/TC59t6BDltvM82ESoY/giphy.gif" alt="animated" /> -->
