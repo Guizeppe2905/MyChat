@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegistrationViewController: TemplateViewController {
+class RegistrationViewController: OnboardingVM {
     
     private var passwordIsVisible: Bool = false
     private var passwordConfirmationIsVisible: Bool = false
@@ -316,9 +316,12 @@ class RegistrationViewController: TemplateViewController {
     }
     
     @objc private func submitAction() {
-        
+ 
         guard let nick = nicknameTF.text, let email = emailTF.text, let password = passwordTF.text else { return }
-        Service.shared.createNewUser(RegistrationModel(nickname: nick, email: email, password: password)) { [weak self] code in
+        
+        let photoURL = "ava1"
+        
+        Service.shared.createNewUser(RegistrationModel(nickname: nick, email: email, password: password, photoURL: photoURL)) { [weak self] code in
             guard let self = self else { return }
             switch code.code {
             case 0:

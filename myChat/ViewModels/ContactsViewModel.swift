@@ -1,5 +1,5 @@
 //
-//  ImgFac.swift
+//  ContactsViewModel.swift
 //  myChat
 //
 //  Created by Мария Хатунцева on 26.10.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ContactCellViewModel {
+struct ContactsViewModel {
     
     enum Mode {
         case random

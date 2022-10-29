@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EntranceViewController: TemplateViewController {
+class EntranceViewController: OnboardingVM {
     
     private lazy var descriptionLabel: UILabel = {
        let label = UILabel()

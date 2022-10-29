@@ -17,9 +17,6 @@ extension ReuseIdentifiable {
     }
 }
 
-
-
-
 protocol Configurable {
     func configure()
 }

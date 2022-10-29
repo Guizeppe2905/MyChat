@@ -18,3 +18,5 @@ struct Message: MessageType {
     var kind: MessageKit.MessageKind
     
 }
+
+

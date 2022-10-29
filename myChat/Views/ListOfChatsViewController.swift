@@ -11,83 +11,76 @@ class ListOfChatsViewController: UIViewController {
     
     var users = [CurrentUserModel]()
     
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "background")
+        return imageView
+    }()
+    
     private lazy var contactsTitleLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Avenir", size: 20)
-        label.textColor = .systemBrown
-        label.text = "Начните переписку с любым из списка контактов"
+        label.font = UIFont(name: "Avenir", size: 22)
+        label.textColor = .systemPink
+        label.text = "Форум со всеми пользователями приложения"
+        label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
     
-    private lazy var usersTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        return tableView
+    private lazy var enterForumButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemPink
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 10
+        button.setTitle("Вступить в форум", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir", size: 18)
+        button.titleLabel?.textAlignment = .right
+        button.titleLabel?.textColor = .white
+        return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.addSubview(backgroundImageView)
+        backgroundImageView.frame = view.bounds
         view.addSubview(contactsTitleLabel)
-        view.addSubview(usersTableView)
-        usersTableView.delegate = self
-        usersTableView.dataSource = self
+        view.addSubview(enterForumButton)
+
         setupConstraints()
         getUsers()
+        enterForumButton.addTarget(self, action: #selector(didTapEnterForumButton), for: .touchUpInside)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
+    }
+    
+    @objc private func didTapEnterForumButton() {
+        var userID = users[0].id
+        let vc = ChatViewController()
+        vc.chatID = "kjhk"
+        vc.otherUserID = userID
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func getUsers() {
         Service.shared.getListOfUsers { [weak self] users in
             self?.users = users
-            self?.usersTableView.reloadData()
+
         }
     }
-    
+
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             
             contactsTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            contactsTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+            contactsTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
             contactsTitleLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
-            contactsTitleLabel.heightAnchor.constraint(equalToConstant: 60),
+            contactsTitleLabel.heightAnchor.constraint(equalToConstant: 80),
             
-            usersTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            usersTableView.topAnchor.constraint(equalTo: contactsTitleLabel.bottomAnchor, constant: 30),
-            usersTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            usersTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            enterForumButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            enterForumButton.topAnchor.constraint(equalTo: contactsTitleLabel.bottomAnchor, constant: 330),
+            enterForumButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            enterForumButton.heightAnchor.constraint(equalToConstant: 60),
             
         ])
     }
-}
-
-extension ListOfChatsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let userID = users[indexPath.row].id
-        let vc = ChatViewController()
-        vc.chatID = "kjhk"
-        vc.otherUserID = userID
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-//        let chat = ChatViewController()
-//        chat.chatID = "temporary_id"
-//        chat.otherUserID = "ptWTLbnogwWvZ9sOl27HkXISUTA2"
-//        navigationController?.pushViewController(chat, animated: true)
-    }
-}
-
-extension ListOfChatsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = usersTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
-        cell.textLabel?.text = users[indexPath.row].nickname
-        return cell
-    }
-    
-    
 }

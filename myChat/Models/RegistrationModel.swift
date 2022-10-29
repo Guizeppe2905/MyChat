@@ -9,9 +9,10 @@ struct RegistrationModel {
     var nickname: String
     var email: String
     var password: String
+    var photoURL: String
 }
 
-struct ResponseCode {
+struct ResponseCode: Equatable {
     var code: Int
 }
 

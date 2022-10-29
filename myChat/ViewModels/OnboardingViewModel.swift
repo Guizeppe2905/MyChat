@@ -1,5 +1,5 @@
 //
-//  TemplateViewController.swift
+//  OnboardingVM.swift
 //  myChat
 //
 //  Created by Мария Хатунцева on 22.10.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TemplateViewController: UIViewController {
+class OnboardingVM: UIViewController {
     
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -18,7 +18,7 @@ class TemplateViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ваш Чат"
+        label.text = "Вход в чат"
         label.font = UIFont.boldSystemFont(ofSize: 50)
         label.textColor = .systemYellow
         return label

@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import FirebaseAuth
+//import FirebaseDatabase
 
-class LoginViewController: TemplateViewController {
+class LoginViewController: OnboardingVM {
     
     private var passwordIsVisible: Bool = false
     
@@ -40,6 +42,14 @@ class LoginViewController: TemplateViewController {
         return textField
     }()
     
+    private lazy var forgotPasswordButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Забыли пароль?", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
     private lazy var submitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -61,12 +71,27 @@ class LoginViewController: TemplateViewController {
         super.viewDidLoad()
         view.addSubview(emailTF)
         view.addSubview(passwordTF)
+        view.addSubview(forgotPasswordButton)
         view.addSubview(submitButton)
         view.addSubview(enterButton)
         setupConstraints()
         buttonLock.addTarget(self, action: #selector(didTapButtonLock), for: .touchUpInside)
         submitButton.addTarget(self, action: #selector(didTapSubmitButton), for: .touchUpInside)
         enterButton.addTarget(self, action: #selector(didTapEnterButton), for: .touchUpInside)
+        forgotPasswordButton.addTarget(self, action: #selector(didTapForgotPasswordButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapForgotPasswordButton() {
+        self.alertForgotPassword(actionHandler: { email in
+            guard let email = email else { return }
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let error = error {
+                    print("didTapPasswordFogotButton: ", error)
+                    self.alertOk(title: "Ошибка", message: "Сбросить пароль не удалось, пожалуйста, повторите запрос.")
+                }
+                self.alertOk(title: "Запрос выполнен", message: "На ваш email \(email) отправлено письмо с инструкцией по смене пароля.")
+            }
+        })
     }
     
     @objc private func didTapButtonLock(_ sender: Any) {
@@ -84,8 +109,9 @@ class LoginViewController: TemplateViewController {
     
     @objc private func didTapSubmitButton() {
         let reg = RegistrationViewController()
-        guard let nick = reg.nicknameTF.text, let email = emailTF.text, let password = passwordTF.text else { return }
-        let authData = RegistrationModel(nickname: nick, email: email, password: password)
+        guard let nick = reg.nicknameTF.text, let email = emailTF.text, let password = passwordTF.text, let photoURL = UIImage(named: "ava1")?.toPngString() else { return }
+        let authData = RegistrationModel(nickname: nick, email: email, password: password, photoURL: photoURL)
+    
         Service.shared.login(authData) { [weak self] response in
             guard let self = self else { return }
             
@@ -98,6 +124,7 @@ class LoginViewController: TemplateViewController {
 //
 //                Service.shared.sendEmailConfirmation()
                 Router.shared.navigateToVC(TabBarViewController())
+                
             case .isUnknown:
                 self.alertOk(title: "Ошибка авторизации", message: "Проверьте правильность ввода данных и попробуйте снова.")
             }
@@ -121,6 +148,11 @@ class LoginViewController: TemplateViewController {
             passwordTF.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 10),
             passwordTF.widthAnchor.constraint(equalToConstant: 340),
             passwordTF.heightAnchor.constraint(equalToConstant: 50),
+            
+            forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            forgotPasswordButton.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: -10),
+            forgotPasswordButton.widthAnchor.constraint(equalToConstant: 340),
+            forgotPasswordButton.heightAnchor.constraint(equalToConstant: 50),
 
             submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             submitButton.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -20),
