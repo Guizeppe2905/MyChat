@@ -7,7 +7,6 @@
 
 import UIKit
 import FirebaseAuth
-//import FirebaseDatabase
 
 class LoginViewController: OnboardingVM {
     
@@ -119,10 +118,8 @@ class LoginViewController: OnboardingVM {
                 
             case .isVerified:
                 Router.shared.navigateToVC(TabBarViewController())
+                
             case .isRegistered:
-//                self.alertOk(title: "Email не был подтвержден", message: "Но вы можете пользоваться мессенджером... На почту выслано повторное оповещение о необходимости верифицировать почту.")
-//
-//                Service.shared.sendEmailConfirmation()
                 Router.shared.navigateToVC(TabBarViewController())
                 
             case .isUnknown:

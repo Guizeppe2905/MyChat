@@ -44,10 +44,7 @@ class OnboardingVM: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-//        view.addSubview(submitButton)
-//        view.addSubview(enterButton)
         setupConstraints()
-     //   navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
     }
     
     private func setupView() {
@@ -55,26 +52,7 @@ class OnboardingVM: UIViewController {
         backgroundImageView.frame = view.bounds
         view.addSubview(titleLabel)
     }
-    
-//    func setButtons(mainButton: String, subButton: String) {
-//        submitButton.setTitle(mainButton, for: .normal)
-//        enterButton.setTitle(subButton, for: .normal)
-//        submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
-//        enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
-////        view.addSubview(submitButton)
-////        view.addSubview(enterButton)
-//    }
-//
-//    @objc func submit(direction: UIViewController) {
-//        let vc = direction
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//
-//    @objc func enter(direction: UIViewController) {
-//        let vc = direction
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//
+
     private func setupConstraints() {
         NSLayoutConstraint.activate([
         

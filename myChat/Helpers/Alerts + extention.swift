@@ -14,7 +14,6 @@ extension UIViewController {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default) { _ in
-           // Router.shared.navigateToVC(TabBarViewController())
             completionHandler()
         }
         let cancel = UIAlertAction(title: "Отмена", style: .cancel)
@@ -80,7 +79,6 @@ extension UIViewController {
         let okButtonTitle = "Сменить ник"
         let cancelButtonTitle = "Отмена"
         let placeholder = "Введите новый никнейм"
-        //"Ник от 6 до 8 символов (1 цифра)"
         
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
         alert.addTextField { (textField: UITextField) in

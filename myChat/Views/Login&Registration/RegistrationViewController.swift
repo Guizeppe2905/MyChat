@@ -131,9 +131,6 @@ class RegistrationViewController: OnboardingVM {
         view.addSubview(nicknameError)
         view.addSubview(repeatPasswordTF)
         view.addSubview(repeatPasswordError)
-//        setButtons(mainButton: "HHHHH", subButton: "KKKKK")
-//        submit(direction: EntranceViewController())
-//        enter(direction: LoginViewController())
         resetForm()
         setupConstraints()
         buttonLock.addTarget(self, action: #selector(didTapButtonLock), for: .touchUpInside)
@@ -330,13 +327,10 @@ class RegistrationViewController: OnboardingVM {
             case 1:
                 self.alertOk(title: "Успешная регистрация", message: "Вы зарегистрированы. На ваш email отправлено оповещение, в котором вы сможете подтвердить регистрацию.")
                 Service.shared.sendEmailConfirmation()
-//                let mainVC = TabBarViewController()
-//                self.navigationController?.pushViewController(mainVC, animated: true)
             default:
                 print("unknown error")
             }
         }
-      //  resetForm()
     }
     
     private func setupConstraints() {

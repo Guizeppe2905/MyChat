@@ -54,7 +54,7 @@ class ListOfChatsViewController: UIViewController {
     }
     
     @objc private func didTapEnterForumButton() {
-        var userID = users[0].id
+        let userID = users[0].id
         let vc = ChatViewController()
         vc.chatID = "kjhk"
         vc.otherUserID = userID

@@ -49,20 +49,13 @@ class ContactsViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(backgroundImageView)
         backgroundImageView.frame = view.bounds
-//
-//        let navBar = UINavigationBar()
-//        navigationItem.title = "Начните чат с другом"
-//
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemPink, NSAttributedString.Key.font: UIFont(name: "Avenir", size: 20) as Any]
-     //   navigationController?.navigationBar.backgroundColor = .systemPink
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
-//        navigationItem.backBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemYellow, NSAttributedString.Key.font: UIFont(name: "Avenir", size: 20) as Any], for: .normal)
 
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemPink, NSAttributedString.Key.font: UIFont(name: "Avenir", size: 20) as Any]
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
+        
         getUsers()
         view.addSubview(navImageView)
-      
-       
-      setupConstraints()
+        setupConstraints()
     }
     private func getUsers() {
         Service.shared.getListOfUsers { [weak self] users in
@@ -88,39 +81,9 @@ class ContactsViewController: UIViewController {
             contactsTitleLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
             contactsTitleLabel.heightAnchor.constraint(equalToConstant: 80),
             
-//            enterForumButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-//            enterForumButton.topAnchor.constraint(equalTo: contactsTitleLabel.bottomAnchor, constant: 250),
-//            enterForumButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-//            enterForumButton.heightAnchor.constraint(equalToConstant: 60),
-            
         ])
     }
 }
-
-//extension ContactsViewController {
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        super.viewWillTransition(to: size, with: coordinator)
-//
-//        coordinator.animate(alongsideTransition: { [weak self] context in
-//            guard let `self` = self else { return }
-//            let size = context.containerView.bounds.size
-//
-//
-//
-//            switch UIDevice.current.orientation {
-//            case .landscapeLeft, .landscapeRight:
-//                let layout = self.createLayout(isLandscape: true, size: size)
-//                self.collectionView.setCollectionViewLayout(layout, animated: true, completion: nil)
-//                self.collectionView.collectionViewLayout = layout
-//            case .portrait, .portraitUpsideDown:
-//                let layout = self.createLayout(isLandscape: false, size: size)
-//                self.collectionView.setCollectionViewLayout(layout, animated: true, completion: nil)
-//            default:
-//                return
-//            }
-//        })
-//    }
-//}
 
 extension ContactsViewController {
     private func createLayout(isLandscape: Bool = false, size: CGSize) -> UICollectionViewLayout {
@@ -144,9 +107,7 @@ extension ContactsViewController {
                 layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25),
                                                    heightDimension: .fractionalHeight(1.0)),
                 subitem: trailingItem, count: 2)
-            
             let fractionalHeight = NSCollectionLayoutDimension.fractionalHeight(0.4)
-            //isLandscape ? NSCollectionLayoutDimension.fractionalHeight(0.8) : NSCollectionLayoutDimension.fractionalHeight(0.4)
             let groupDimensionHeight: NSCollectionLayoutDimension = fractionalHeight
             
             let rightGroup = NSCollectionLayoutGroup.horizontal(
@@ -160,7 +121,6 @@ extension ContactsViewController {
                 subitems: [trailingRightGroup, trailingLeftGroup, leadingItem])
             
             let height = size.height / 1.25
-            //isLandscape ? size.height / 0.9 : size.height / 1.25
             let megaGroup = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                    heightDimension: .estimated(height)),
@@ -176,10 +136,8 @@ extension ContactsViewController {
     private func configureHierarchy() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout(size: view.bounds.size))
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-      //  collectionView.backgroundColor = .systemGray3
         collectionView.backgroundView = UIImageView(image: UIImage(named: "background"))
         collectionView.register(ContactTableViewCell.self, forCellWithReuseIdentifier: ContactTableViewCell.reuseIdentifier)
-//        collectionView.bringSubviewToFront(contactsTitleLabel)
         view.addSubview(collectionView)
         view.bringSubviewToFront(collectionView)
         view.bringSubviewToFront(navImageView)
@@ -191,7 +149,7 @@ extension ContactsViewController {
             
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: ContactTableViewCell.reuseIdentifier,
-                for: indexPath) as? ContactTableViewCell else { fatalError("Could not create new cell") }
+                for: indexPath) as? ContactTableViewCell else { fatalError("Не получилось создать новую ячейку") }
             cell.image = ContactsViewModel.produce(using: .random)
             let nickCell = self.users[indexPath.row]
             cell.configure(viewModel: nickCell)
@@ -208,7 +166,7 @@ extension ContactsViewController {
         
         func produceImage() -> UIImage {
             guard let image = ContactsViewModel.produce(using: .random) else {
-                fatalError("Could not generate an UIImage instance by using the ImageFactory struct")
+                fatalError("Ошибка с загрузкой картинки...")
             }
             return image
         }
@@ -225,46 +183,15 @@ extension ContactsViewController: UICollectionViewDelegate {
         let userAva = users[indexPath.row].photoURL
         let userNick = users[indexPath.row].nickname
         let vc = ChatViewController()
-        
-        print("WE HAVE \(userID), \(userNick), \(userAva)")
-        print("OTHER US ID \(userID)")
         vc.userAva = userAva
         vc.otherUserID = userID
         vc.userNick = userNick
         vc.otherUserVM = users[indexPath.row]
-        Service.shared.getChatID(userID: userID) { [weak self] chatID in
-            
-        
-           vc.chatID = chatID
-            print("CHAT ID - \(vc.chatID)")
-     
+        Service.shared.getChatID(userID: userID) { chatID in
+            vc.chatID = chatID
         }
-        
-        
-        
-        //PrivateRoomChatViewController()
-        //ChatViewController()
-      
-      //  vc.chatID = "temporary_id"
-        
-        
-        
-        vc.otherUserID = userID
-        
-         self.navigationController?.pushViewController(vc, animated: true)
-        
-  //      self.navigationController?.pushViewController(vc, animated: true)
-        
-//        if let sheet = vc.sheetPresentationController {
-//            sheet.detents = [.large()]
-//            sheet.largestUndimmedDetentIdentifier = .large
-//            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-//            sheet.prefersEdgeAttachedInCompactHeight = true
-//            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-//            sheet.prefersGrabberVisible = true
-//            sheet.preferredCornerRadius = 30
-//        }
-//        present(vc, animated: true, completion: nil)
-        
+            vc.otherUserID = userID
+            self.navigationController?.pushViewController(vc, animated: true)
+     
     }
 }

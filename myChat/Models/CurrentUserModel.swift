@@ -10,6 +10,6 @@ struct CurrentUserModel {
     var id: String
     var email: String
     var nickname: String
- //   var password: String
     var photoURL: String?
+    
 }

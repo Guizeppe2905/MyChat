@@ -18,9 +18,63 @@ class Service {
     let defaultsAvatars = ["ava1", "ava2", "ava3", "ava4", "ava5", "ava6"]
     init() {}
     
+    func sendEmailConfirmation() {
+        Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+            }
+        })
+    }
+    
+    func getListOfUsers(completion: @escaping ([CurrentUserModel]) -> ()) {
+        ProgressHUD.show("Идет загрузка...")
+        guard let email = Auth.auth().currentUser?.email else { return }
+        
+        var currentUsers = [CurrentUserModel]()
+        Firestore.firestore().collection("users")
+            .whereField("email", isNotEqualTo: email)
+         
+            .getDocuments { [weak self] snap, error in
+                guard self != nil else { return }
+           
+            if error == nil {
+
+                if let docs = snap?.documents {
+                    for doc in docs {
+                        let data = doc.data()
+                        let userID = doc.documentID
+                        let email = data["email"]
+                        let nickname = data["nickname"]
+                        let photoURL = data["photoURL"]
+                        currentUsers.append(CurrentUserModel(id: userID, email: email as! String, nickname: nickname as! String, photoURL: photoURL as? String))
+                    }
+                }
+                ProgressHUD.dismiss()
+                completion(currentUsers)
+            }
+        }
+    }
+    
+    func getChatID(userID: String, completion: @escaping (String) -> ()) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let reference = Firestore.firestore()
+            reference.collection("users").document(uid).collection("chats").whereField("otherID", isEqualTo: userID).getDocuments { snap, error in
+                if error != nil {
+                    return
+                }
+                if let snap = snap, !snap.documents.isEmpty {
+                    let doc = snap.documents.first
+                    if let chatID = doc?.documentID {
+                        completion(chatID)
+                    }
+                }
+            }
+        }
+    }
+    
     func createNewUser(_ data: RegistrationModel, completion: @escaping(ResponseCode) -> ()) {
         
-        Auth.auth().createUser(withEmail: data.email, password: data.password) { [weak self] result, error in
+        Auth.auth().createUser(withEmail: data.email, password: data.password) { result, error in
             if error == nil {
                 if result != nil {
                     guard let userID = result?.user.uid else { return }
@@ -41,17 +95,9 @@ class Service {
         }
     }
     
-    func sendEmailConfirmation() {
-        Auth.auth().currentUser?.sendEmailVerification(completion: { error in
-            if error != nil {
-                print(error?.localizedDescription as Any)
-            }
-        })
-    }
-    
     func login(_ data: RegistrationModel, completion: @escaping (AuthResponse) -> ()) {
-        Auth.auth().signIn(withEmail: data.email, password: data.password) { [weak self] result, error in
-            guard let self = self else { return }
+        Auth.auth().signIn(withEmail: data.email, password: data.password) { result, error in
+        
             if error != nil {
                 completion(.isUnknown)
             } else {
@@ -63,37 +109,6 @@ class Service {
                     }
                 }
             }
-        }
-        
-    }
-    
-    func getListOfUsers(completion: @escaping ([CurrentUserModel]) -> ()) {
-        ProgressHUD.show("Идет загрузка...")
-        guard let email = Auth.auth().currentUser?.email else { return }
-        
-        var currentUsers = [CurrentUserModel]()
-        Firestore.firestore().collection("users")
-            .whereField("email", isNotEqualTo: email)
-         
-            .getDocuments { [weak self] snap, error in
-            guard let self = self else { return }
-           
-            if error == nil {
-
-                if let docs = snap?.documents {
-                    for doc in docs {
-                        let data = doc.data()
-                        let userID = doc.documentID
-                        let email = data["email"]
-                        let nickname = data["nickname"]
-                        let photoURL = data["photoURL"]
-                        currentUsers.append(CurrentUserModel(id: userID, email: email as! String, nickname: nickname as! String, photoURL: photoURL as? String))
-                    }
-                }
-                ProgressHUD.dismiss()
-                completion(currentUsers)
-            }
-            
         }
     }
     
@@ -145,28 +160,11 @@ class Service {
                     "sender": uid,
                     "text": text
                 ]
-                reference.collection("chats").document(chatID).collection("messages").addDocument(data: msg) { [weak self] error in
+                reference.collection("chats").document(chatID).collection("messages").addDocument(data: msg) {  error in
                     if error == nil {
                         completion(chatID)
                     }
 
-                }
-            }
-        }
-    }
-
-    func getChatID(userID: String, completion: @escaping (String) -> ()) {
-        if let uid = Auth.auth().currentUser?.uid {
-            let reference = Firestore.firestore()
-            reference.collection("users").document(uid).collection("chats").whereField("otherID", isEqualTo: userID).getDocuments { snap, error in
-                if let error = error {
-                    return
-                }
-                if let snap = snap, !snap.documents.isEmpty {
-                    let doc = snap.documents.first
-                    if let chatID = doc?.documentID {
-                        completion(chatID)
-                    }
                 }
             }
         }
@@ -207,10 +205,6 @@ class Service {
                     }
                 }
         }
-    }
-    
-    func getOneMessage() {
-        
     }
  
     func sendMessageWithPhoto(userID: String?, chatID: String?, text: UIImage, completion: @escaping (String) -> ()) {
@@ -261,7 +255,7 @@ class Service {
                     "sender": uid,
                     "text": text
                 ]
-                reference.collection("chats").document(chatID).collection("messages").addDocument(data: msg) { [weak self] error in
+                reference.collection("chats").document(chatID).collection("messages").addDocument(data: msg) { error in
                     if error == nil {
                         completion(chatID)
                     }
@@ -276,11 +270,11 @@ class Service {
         let userID = withID
 
         let data: [String: Any] = ["photoURL": newAva]
-        Firestore.firestore().collection("users").document(userID).updateData(data) { [weak self] result in
+        Firestore.firestore().collection("users").document(userID).updateData(data) { result in
             if result != nil {
-               // print("super")
+         //
             } else {
-               // print("fuck")
+          //
                 }
         }
     }
@@ -291,7 +285,7 @@ class Service {
         let userID = withID
         
         let data: [String: Any] = ["nickname": newNick]
-        Firestore.firestore().collection("users").document(userID).updateData(data) { [weak self] result in
+        Firestore.firestore().collection("users").document(userID).updateData(data) { result in
             if result != nil {
             completion(ResponseCode(code: 1))
             } else {
@@ -300,17 +294,14 @@ class Service {
     }
     }
  
-    
-    public func updateUser(withEmail: String, image: UIImage, filename: String,
-                           completion: @escaping(ResponseCode) -> ()) {
+    func updateUser(withEmail: String, image: UIImage, filename: String, completion: @escaping(ResponseCode) -> ()) {
 
         guard let userID = Auth.auth().currentUser?.uid else { return }
         guard let photoURL = image.pngData() else { return }
         let fileName = filename
         let data: [String: Any] = ["photoURL": photoURL]
-        
     
-        Firestore.firestore().collection("users").document(userID).updateData(data) { [weak self] result in
+        Firestore.firestore().collection("users").document(userID).updateData(data) {  result in
                 if result != nil {
                     StorageManager.shared.uploadProfilePicture(with: photoURL, fileName: fileName, completion: { results in
                         switch results {
@@ -332,9 +323,7 @@ class Service {
         }
     }
 
-    
-    public func updateUserNickname(withEmail: String, newNickname: String,
-                                   completion: @escaping(ResponseCode) -> ()) {
+    func updateUserNickname(withEmail: String, newNickname: String, completion: @escaping(ResponseCode) -> ()) {
 
         guard let userID = Auth.auth().currentUser?.uid else { return }
      
@@ -342,10 +331,10 @@ class Service {
         let data: [String: Any] = ["nickname": nickname]
         
     
-        Firestore.firestore().collection("users").document(userID).updateData(data) { [weak self] result in
+        Firestore.firestore().collection("users").document(userID).updateData(data) { result in
        
                 if result != nil {
-                    Service.shared.updateNickName(withID: userID, newNickName: nickname, completion: { [weak self] error in
+                    Service.shared.updateNickName(withID: userID, newNickName: nickname, completion: { error in
                         if error == error {
                             print(error)
                         } else {
@@ -358,7 +347,6 @@ class Service {
                     completion(ResponseCode(code: 0))
                     
                 }
-            
         }
     }
     
@@ -368,7 +356,7 @@ class Service {
             completion(UIImage(named: image))
         } else {
             guard let url = URL(string: stringUrl) else { return }
-            var request = URLRequest(url: url)
+            let request = URLRequest(url: url)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard let data = data else { return }
                 DispatchQueue.main.async {
@@ -385,7 +373,7 @@ class Service {
             completion(UIImage(named: image))
         } else {
             guard let url = URL(string: stringUrl) else { return }
-            var request = URLRequest(url: url)
+            let request = URLRequest(url: url)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard let data = data else { return }
                 DispatchQueue.main.async {

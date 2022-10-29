@@ -181,23 +181,5 @@ extension ProfileViewController: ObsevableSelectImage {
     func selectObservableImage(_ image: UIImage) {
         self.avatarImageView.image = image
         
- 
-        
-        
-//        guard let email = Auth.auth().currentUser?.email else { return }
-//        Service.shared.userExists(with: email, completion: { [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case true:
-//                <#code#>
-//            case false:
-//                break
-//
-//            }})
-        
-        
-      
-        
-       // Service.shared.createNewUser(<#T##data: RegistrationModel##RegistrationModel#>, completion: <#T##(ResponseCode) -> ()#>)
     }
 }
