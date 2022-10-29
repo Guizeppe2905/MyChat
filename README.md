@@ -1,6 +1,6 @@
 
 # MyChat - Месседжер / Чат и форум
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=16&multiline=true&height=70&lines=YoDaBox+%3D+Your+Data+Box;People+earn+by+watching+ads+%26;Business+gets+the+hottest+target+audience)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=MyChat+-+%D0%9C%D0%B5%D1%81%D1%81%D0%B5%D0%B4%D0%B6%D0%B5%D1%80+%2F+%D0%A7%D0%B0%D1%82+%D0%B8+%D1%84%D0%BE%D1%80%D1%83%D0%BC)](https://git.io/typing-svg)
 ***
 Полноценный чат с хранением данных на Firebase. Имеет возможность создавать чаты с каждым пользователем для личных сообщений, отдельную общую комнату для общения со всеми участниками (форум), валидированную регистрацию и авторизацию, частные настройки профиля.
 ***
