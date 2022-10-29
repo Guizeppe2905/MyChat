@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>494157183139-susq789p991taoivq1ourto1hmti6uoe.apps.googleusercontent.com</string>
+	<string>229034544951-150htte2dv0eq7df9pq3m5if7103p25d.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.494157183139-susq789p991taoivq1ourto1hmti6uoe</string>
+	<string>com.googleusercontent.apps.229034544951-150htte2dv0eq7df9pq3m5if7103p25d</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCKOhbYhio1ovrSraAtH-o4MRGsy8Ydm6k</string>
+	<string>AIzaSyCZk6dCzrJ4rqQ2vCdR46vqT2budj1YD0o</string>
 	<key>GCM_SENDER_ID</key>
-	<string>494157183139</string>
+	<string>229034544951</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>skillbox.myChat</string>
 	<key>PROJECT_ID</key>
-	<string>mychat-f8385</string>
+	<string>messager-d9fb7</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mychat-f8385.appspot.com</string>
+	<string>messager-d9fb7.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:494157183139:ios:e15529ecab6f61e8dfa716</string>
+	<string>1:229034544951:ios:6e618e52996b20bf3114b2</string>
 </dict>
 </plist>

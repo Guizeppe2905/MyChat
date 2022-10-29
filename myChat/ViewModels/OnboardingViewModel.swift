@@ -82,16 +82,6 @@ class TemplateViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 260),
             titleLabel.widthAnchor.constraint(equalToConstant: 250),
             titleLabel.heightAnchor.constraint(equalToConstant: 50),
-//            
-//            submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            submitButton.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -20),
-//            submitButton.widthAnchor.constraint(equalToConstant: 340),
-//            submitButton.heightAnchor.constraint(equalToConstant: 50),
-//            
-//            enterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            enterButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
-//            enterButton.widthAnchor.constraint(equalToConstant: 340),
-//            enterButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
     }
